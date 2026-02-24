@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>크루즈링크 - 프리미엄 크루즈 여행</title>
+  <meta name="description" content="MSC, NCL 크루즈 전문 - 지중해, 알래스카, 카리브해, 일본 크루즈 여행 상담">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚢</text></svg>">
+  <style>
+    /* =========================================
+       V3 메인 페이지 전용 스타일
+       ========================================= */
+
+    /* ── HERO V3 ── */
+    .hero-v3 {
+      position: relative;
+      min-height: 600px;
+      background: url('https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0;
+      overflow: hidden;
+    }
+    .hero-v3 .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,20,0.35) 0%, rgba(0,0,40,0.55) 60%, rgba(0,0,30,0.75) 100%);
+    }
+    .hero-v3-content {
+      position: relative; z-index: 1;
+      padding: 80px 20px 0;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-v3-eyebrow {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .hero-v3-title {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      text-transform: uppercase;
+    }
+    .hero-v3-title em {
+      font-style: normal;
+      color: #f9c74f;
+    }
+    .hero-v3-sub {
+      color: rgba(255,255,255,0.92);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .hero-v3-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.95rem;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      margin-bottom: 36px;
+    }
+    .hero-v3-cta:hover { background: var(--orange-hover); }
+
+    /* ── HERO 인라인 검색바 ── */
+    .hero-search-wrap {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 -2px 30px rgba(0,0,0,0.18);
+      padding: 20px 0;
+      margin-top: 0;
+    }
+    .hero-search-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .hero-search-group {
+      flex: 1;
+      min-width: 150px;
+    }
+    .hero-search-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .hero-search-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 2px solid var(--gray-300);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: #fff;
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23616161'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      color: var(--gray-900);
+      transition: border-color 0.2s;
+    }
+    .hero-search-group select:focus { border-color: var(--navy); outline: none; }
+    .hero-search-btn {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 13px 32px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+      letter-spacing: 0.3px;
+      height: 48px;
+    }
+    .hero-search-btn:hover { background: var(--navy-light); }
+
+    /* ── PROMO STRIP ── */
+    .promo-strip {
+      background: #4a148c;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 14px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .promo-strip a {
+      background: var(--orange);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .promo-strip a:hover { background: var(--orange-hover); }
+
+    /* ── DEAL SECTION ── */
+    .deal-section { padding: 48px 0 0; }
+
+    .deal-banner {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(120deg, #0d47a1 0%, #1565c0 40%, #0a2a6e 100%);
+      display: flex;
+      align-items: center;
+      min-height: 200px;
+      margin-bottom: 20px;
+    }
+    .deal-banner-img {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 55%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .deal-banner-overlay {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 60%;
+      background: linear-gradient(to right, #0d47a1 0%, transparent 100%);
+    }
+    .deal-banner-body {
+      position: relative; z-index: 2;
+      padding: 36px 40px;
+      color: #fff;
+      max-width: 460px;
+    }
+    .deal-banner-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 6px;
+    }
+    .deal-banner-title {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .deal-banner-title em {
+      font-style: italic;
+      font-size: 2.6rem;
+      display: block;
+    }
+    .deal-banner-price {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #f9c74f;
+      margin-bottom: 18px;
+    }
+    .deal-banner-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .deal-banner-btn:hover { background: var(--orange-hover); }
+
+    .deal-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding-bottom: 48px;
+    }
+    .deal-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1.05;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+    .deal-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+    .deal-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .deal-card:hover img { transform: scale(1.06); }
+    .deal-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 30%, rgba(0,0,0,0.75) 100%);
+    }
+    .deal-card-body {
+      position: relative; z-index: 2;
+      padding: 18px 16px;
+      color: #fff;
+    }
+    .deal-card-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 4px;
+    }
+    .deal-card-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    }
+    .deal-card-from {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      opacity: 0.85;
+      letter-spacing: 1px;
+    }
+    .deal-card-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #f9c74f;
+      margin-bottom: 12px;
+    }
+    .deal-card-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 900;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    .deal-card:hover .deal-card-btn { background: var(--orange-hover); }
+
+    /* ── SHIPS SECTION ── */
+    .ships-section {
+      background: url('https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1600&q=80') center/cover no-repeat;
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+    .ships-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(5,10,50,0.82);
+    }
+    .ships-inner {
+      position: relative; z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: flex;
+      gap: 32px;
+      align-items: stretch;
+    }
+    .ships-text {
+      flex: 0 0 240px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .ships-text h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .ships-text p {
+      font-size: 0.9rem;
+      opacity: 0.82;
+      line-height: 1.7;
+    }
+    .ships-cards {
+      flex: 1;
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .ship-card {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .ship-card:hover { transform: scale(1.02); }
+    .ship-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .ship-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 50%, rgba(0,0,0,0.75) 100%);
+    }
+    .ship-card-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 14px;
+      color: #fff;
+    }
+    .ship-card-name {
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ship-card-home {
+      font-size: 0.72rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ship-card-all {
+      flex: 0 0 140px;
+      border-radius: 10px;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      padding: 20px;
+      gap: 8px;
+    }
+    .ship-card-all:hover { background: #1565c0; }
+    .ship-card-all-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .ship-card-all-text {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .ship-card-all svg {
+      margin-top: 8px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── CRUISE TABS ── */
+    .cruise-tabs-section { padding: 60px 0; }
+    .cruise-tabs-nav {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--gray-300);
+      margin-bottom: 28px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cruise-tabs-nav::-webkit-scrollbar { display: none; }
+    .cruise-tab-btn {
+      padding: 12px 22px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      border: none;
+      background: none;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .cruise-tab-btn.active {
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+      font-weight: 700;
+    }
+    .cruise-tab-btn:hover:not(.active) { color: var(--navy); }
+
+    .tab-cruise-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .tab-card {
+      border: 1px solid var(--gray-300);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .tab-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .tab-card-img {
+      height: 160px;
+      overflow: hidden;
+    }
+    .tab-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .tab-card:hover .tab-card-img img { transform: scale(1.05); }
+    .tab-card-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .tab-card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .tab-card-from {
+      font-size: 0.7rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tab-card-price {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--gray-900);
+      margin-bottom: 2px;
+    }
+    .tab-card-price-note {
+      font-size: 0.72rem;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+    }
+    .tab-card-meta {
+      margin-top: auto;
+      border-top: 1px solid var(--gray-200);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .tab-card-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--gray-700);
+    }
+    .tab-card-meta-row svg { flex-shrink: 0; }
+    .tab-card-dates {
+      display: block;
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+    .tab-card-dates:hover { text-decoration: underline; }
+
+    .tabs-loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px;
+      color: var(--gray-500);
+    }
+
+    /* ── PARTNER LOGOS ── */
+    .partners-section {
+      padding: 40px 0;
+      border-top: 1px solid var(--gray-200);
+    }
+    .partners-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gray-500);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .deal-cards { grid-template-columns: repeat(2, 1fr); }
+      .tab-cruise-grid { grid-template-columns: repeat(3, 1fr); }
+      .ships-cards { overflow-x: auto; }
+    }
+    @media (max-width: 768px) {
+      .hero-v3 { min-height: 480px; }
+      .hero-v3-title { font-size: 1.8rem; }
+      .hero-search-inner { flex-direction: column; gap: 8px; }
+      .hero-search-group { min-width: unset; width: 100%; }
+      .hero-search-btn { width: 100%; }
+      .promo-strip { flex-direction: column; gap: 10px; text-align: center; }
+      .deal-cards { grid-template-columns: repeat(2, 1fr); }
+      .deal-banner-img, .deal-banner-overlay { width: 100%; opacity: 0.4; }
+      .ships-inner { flex-direction: column; }
+      .ships-text { flex: none; }
+      .ships-cards { min-height: 220px; }
+      .ship-card-all { flex: 0 0 110px; }
+      .tab-cruise-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .hero-v3-title { font-size: 1.5rem; }
+      .deal-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .tab-cruise-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <!-- ① HERO + 검색바 -->
+  <section class="hero-v3">
+    <div class="hero-overlay"></div>
+    <div class="hero-v3-content">
+      <span class="hero-v3-eyebrow">🚢 2026 얼리버드 특가</span>
+      <h1 class="hero-v3-title">
+        최대 <em style="color:#f9c74f">30% 할인</em><br>
+        2026 크루즈 패키지
+      </h1>
+      <p class="hero-v3-sub">
+        + 2인 기준 추가 할인 · 조기예약 특별 혜택<br>
+        + 지중해 · 알래스카 · 카리브해 · 동아시아 전 노선
+      </p>
+      <a href="search.html" class="hero-v3-cta">지금 예약하기</a>
+    </div>
+    <!-- 검색바 -->
+    <div class="hero-search-wrap">
+      <div class="hero-search-inner">
+        <div class="hero-search-group">
+          <label>목적지</label>
+          <select id="filterDest" onchange="updateDepartureOptions()">
+            <option value="">전체 목적지</option>
+            <option value="korea">한국/일본</option>
+            <option value="mediterranean">지중해</option>
+            <option value="alaska">알래스카</option>
+            <option value="caribbean">카리브해</option>
+            <option value="northern-europe">북유럽</option>
+            <option value="asia">아시아/중동</option>
+            <option value="south-america">남미</option>
+            <option value="oceania">오세아니아</option>
+            <option value="hawaii">하와이</option>
+          </select>
+        </div>
+        <div class="hero-search-group">
+          <label>출발 도시</label>
+          <select id="filterPort">
+            <option value="">전체</option>
+          </select>
+        </div>
+        <div class="hero-search-group">
+          <label>출발 월</label>
+          <select id="filterMonth">
+            <option value="">전체</option>
+          </select>
+        </div>
+        <button class="hero-search-btn" onclick="doSearch()">크루즈 검색</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 프로모 스트립 배너 -->
+  <div class="promo-strip">
+    <span>✨ 지금 상담 신청 시 전담 컨설턴트 1:1 배정</span>
+    <a href="#" onclick="openInquiry(); return false;">상담 신청하기</a>
+  </div>
+
+  <!-- ③ 딜 배너 + 목적지 딜 카드 4개 -->
+  <section class="deal-section">
+    <div class="container">
+
+      <!-- 와이드 딜 배너 -->
+      <div class="deal-banner">
+        <img class="deal-banner-img" src="https://images.unsplash.com/photo-1580541631950-7282082b53ce?w=1200&q=80" alt="크루즈 특가">
+        <div class="deal-banner-overlay"></div>
+        <div class="deal-banner-body">
+          <div class="deal-banner-eyebrow">한정 특가 · 선착순 마감</div>
+          <div class="deal-banner-title">지중해<em>크루즈</em></div>
+          <div class="deal-banner-price">₩1,190,000~</div>
+          <a href="destination.html?dest=mediterranean" class="deal-banner-btn">자세히 보기</a>
+        </div>
+      </div>
+
+      <!-- 4개 딜 카드 -->
+      <div class="deal-cards">
+
+        <a href="destination.html?dest=caribbean" class="deal-card">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="카리브해">
+          <div class="deal-card-overlay"></div>
+          <div class="deal-card-body">
+            <div class="deal-card-eyebrow">인기 노선</div>
+            <div class="deal-card-title">카리브해<br>크루즈</div>
+            <div class="deal-card-from">최저가</div>
+            <div class="deal-card-price">₩960,000~</div>
+            <span class="deal-card-btn">자세히 보기</span>
+          </div>
+        </a>
+
+        <a href="destination.html?dest=mediterranean" class="deal-card">
+          <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="지중해">
+          <div class="deal-card-overlay"></div>
+          <div class="deal-card-body">
+            <div class="deal-card-eyebrow">가장 인기</div>
+            <div class="deal-card-title">지중해<br>크루즈</div>
+            <div class="deal-card-from">최저가</div>
+            <div class="deal-card-price">₩1,190,000~</div>
+            <span class="deal-card-btn">자세히 보기</span>
+          </div>
+        </a>
+
+        <a href="destination.html?dest=alaska" class="deal-card">
+          <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=80" alt="알래스카">
+          <div class="deal-card-overlay"></div>
+          <div class="deal-card-body">
+            <div class="deal-card-eyebrow">대자연</div>
+            <div class="deal-card-title">알래스카<br>크루즈</div>
+            <div class="deal-card-from">최저가</div>
+            <div class="deal-card-price">₩1,890,000~</div>
+            <span class="deal-card-btn">자세히 보기</span>
+          </div>
+        </a>
+
+        <a href="destination.html?dest=korea" class="deal-card">
+          <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="한국/일본">
+          <div class="deal-card-overlay"></div>
+          <div class="deal-card-body">
+            <div class="deal-card-eyebrow">한국 출발</div>
+            <div class="deal-card-title">한국·일본<br>크루즈</div>
+            <div class="deal-card-from">최저가</div>
+            <div class="deal-card-price">₩720,000~</div>
+            <span class="deal-card-btn">자세히 보기</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 선박 소개 섹션 -->
+  <section class="ships-section">
+    <div class="ships-inner">
+      <div class="ships-text">
+        <h2>최신.<br>최대.<br>최고.</h2>
+        <p>세계 최고의 크루즈 선박이 당신을 기다립니다. 지중해의 석양부터 알래스카의 빙하까지 — MSC와 Norwegian이 운영하는 플래그십 선박으로 특별한 바다를 경험하세요.</p>
+      </div>
+      <div class="ships-cards">
+
+        <div class="ship-card" onclick="location.href='ship-detail.html?ref=MSCSC'">
+          <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=600&q=80" alt="MSC Seashore">
+          <div class="ship-card-overlay"></div>
+          <div class="ship-card-body">
+            <div class="ship-card-name">MSC Seashore</div>
+            <div class="ship-card-home">지중해 · 카리브해</div>
+          </div>
+        </div>
+
+        <div class="ship-card" onclick="location.href='ship-detail.html?ref=MSCV'">
+          <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=600&q=80" alt="MSC Virtuosa">
+          <div class="ship-card-overlay"></div>
+          <div class="ship-card-body">
+            <div class="ship-card-name">MSC Virtuosa</div>
+            <div class="ship-card-home">북유럽 · 지중해</div>
+          </div>
+        </div>
+
+        <div class="ship-card" onclick="location.href='ship-detail.html?ref=NCLE'">
+          <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80" alt="Norwegian Encore">
+          <div class="ship-card-overlay"></div>
+          <div class="ship-card-body">
+            <div class="ship-card-name">Norwegian Encore</div>
+            <div class="ship-card-home">알래스카 · 카리브해</div>
+          </div>
+        </div>
+
+        <a href="ships.html" class="ship-card-all">
+          <div class="ship-card-all-label">전체 보기</div>
+          <div class="ship-card-all-text">ALL<br>SHIPS</div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 크루즈 탭 + 리스팅 -->
+  <section class="cruise-tabs-section">
+    <div class="container">
+      <nav class="cruise-tabs-nav" id="cruiseTabsNav">
+        <button class="cruise-tab-btn active" onclick="switchTab(this,'mediterranean')">지중해</button>
+        <button class="cruise-tab-btn" onclick="switchTab(this,'alaska')">알래스카</button>
+        <button class="cruise-tab-btn" onclick="switchTab(this,'caribbean')">카리브해</button>
+        <button class="cruise-tab-btn" onclick="switchTab(this,'korea')">한국·일본</button>
+        <button class="cruise-tab-btn" onclick="switchTab(this,'northern-europe')">북유럽</button>
+        <button class="cruise-tab-btn" onclick="switchTab(this,'asia')">아시아·중동</button>
+      </nav>
+      <div class="tab-cruise-grid" id="tabCruiseGrid">
+        <div class="tabs-loading">크루즈 정보를 불러오는 중...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ 파트너 선사 로고 -->
+  <section class="partners-section">
+    <div class="container">
+      <div class="partners-label">파트너 선사</div>
+      <div class="logo-slider-wrap">
+        <div class="logo-slider-track" id="logoTrack">
+          <img src="assets/images/logos/royal-caribbean.svg" alt="Royal Caribbean">
+          <img src="assets/images/logos/msc.png" alt="MSC Cruises">
+          <img src="assets/images/logos/ncl.jpg" alt="Norwegian Cruise Line">
+          <img src="assets/images/logos/celebrity.svg" alt="Celebrity Cruises">
+          <img src="assets/images/logos/carnival.svg" alt="Carnival Cruise Line">
+          <img src="assets/images/logos/disney.svg" alt="Disney Cruise Line">
+          <img src="assets/images/logos/cunard.svg" alt="Cunard">
+          <img src="assets/images/logos/silversea.svg" alt="Silversea Cruises">
+          <img src="assets/images/logos/oceania.svg" alt="Oceania Cruises">
+          <img src="assets/images/logos/regent.png" alt="Regent Seven Seas">
+          <!-- Duplicate for infinite scroll -->
+          <img src="assets/images/logos/royal-caribbean.svg" alt="Royal Caribbean">
+          <img src="assets/images/logos/msc.png" alt="MSC Cruises">
+          <img src="assets/images/logos/ncl.jpg" alt="Norwegian Cruise Line">
+          <img src="assets/images/logos/celebrity.svg" alt="Celebrity Cruises">
+          <img src="assets/images/logos/carnival.svg" alt="Carnival Cruise Line">
+          <img src="assets/images/logos/disney.svg" alt="Disney Cruise Line">
+          <img src="assets/images/logos/cunard.svg" alt="Cunard">
+          <img src="assets/images/logos/silversea.svg" alt="Silversea Cruises">
+          <img src="assets/images/logos/oceania.svg" alt="Oceania Cruises">
+          <img src="assets/images/logos/regent.png" alt="Regent Seven Seas">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="ctaSection"></div>
+  <div id="footer"></div>
+
+  <script src="assets/data/translations.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script>
+    document.getElementById('header').innerHTML = Components.header('home');
+    document.getElementById('footer').innerHTML = Components.footer();
+    document.getElementById('ctaSection').innerHTML = Components.ctaSection();
+
+    // === Departure port mapping ===
+    const DEST_PORTS = {
+      'korea': ['도쿄','나하, 오키나와','부산','인천'],
+      'mediterranean': ['바르셀로나','마르세유','제노바','치비타베키아','나폴리','팔레르모','발레타','메시나','리보르노','트리에스테','피레우스','이스탄불','리스본','말라가','발렌시아'],
+      'alaska': ['시애틀','밴쿠버'],
+      'caribbean': ['마이애미','포트 카나베럴','갤버스턴','뉴욕','뉴올리언스','산후안','잭슨빌','보스턴','탬파'],
+      'northern-europe': ['사우샘프턴','코펜하겐','킬','헬싱키','레이캬비크','함부르크'],
+      'asia': ['아부다비','두바이','도하','싱가포르'],
+      'south-america': ['산투스','살바도르','부에노스아이레스','리우데자네이루','로스앤젤레스','마이애미'],
+      'oceania': ['시드니','오클랜드','멜버른','브리즈번'],
+      'hawaii': ['호놀룰루, 하와이'],
+    };
+
+    // Populate departure port dropdown based on destination
+    function updateDepartureOptions() {
+      const dest = document.getElementById('filterDest').value;
+      const portSel = document.getElementById('filterPort');
+      portSel.innerHTML = '<option value="">전체</option>';
+      if (!dest || !DEST_PORTS[dest]) return;
+      DEST_PORTS[dest].forEach(port => {
+        portSel.innerHTML += `<option value="${port}">${port}</option>`;
+      });
+    }
+
+    // Populate month filter
+    const monthSelect = document.getElementById('filterMonth');
+    const now = new Date();
+    for (let i = 0; i < 24; i++) {
+      const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+      const val = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+      const label = `${d.getFullYear()}년 ${d.getMonth() + 1}월`;
+      monthSelect.innerHTML += `<option value="${val}">${label}</option>`;
+    }
+
+    // Search
+    function doSearch() {
+      const dest = document.getElementById('filterDest').value;
+      const port = document.getElementById('filterPort').value;
+      const month = document.getElementById('filterMonth').value;
+      const params = new URLSearchParams();
+      if (dest) params.set('dest', dest);
+      if (port) params.set('ports', port);
+      if (month) params.set('month', month);
+      location.href = `search.html?${params.toString()}`;
+    }
+
+    // ── 목적지별 이미지 매핑 ──
+    const DEST_IMAGES = {
+      mediterranean: [
+        'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80',
+        'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80',
+        'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=600&q=80',
+        'https://images.unsplash.com/photo-1529963183134-61a90db47eaf?w=600&q=80',
+        'https://images.unsplash.com/photo-1520645521318-f03a712f0e67?w=600&q=80',
+      ],
+      alaska: [
+        'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=80',
+        'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80',
+        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+        'https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=600&q=80',
+        'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80',
+      ],
+      caribbean: [
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+        'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80',
+        'https://images.unsplash.com/photo-1530053969600-caed2596d242?w=600&q=80',
+        'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=600&q=80',
+      ],
+      korea: [
+        'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80',
+        'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80',
+        'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80',
+        'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&q=80',
+        'https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?w=600&q=80',
+      ],
+      'northern-europe': [
+        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
+        'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80',
+        'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600&q=80',
+        'https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=600&q=80',
+        'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80',
+      ],
+      asia: [
+        'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80',
+        'https://images.unsplash.com/photo-1538230506809-1e3c5bed6a80?w=600&q=80',
+        'https://images.unsplash.com/photo-1534008757030-27299c4371b6?w=600&q=80',
+        'https://images.unsplash.com/photo-1522083165195-3424ed129620?w=600&q=80',
+        'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=80',
+      ],
+    };
+
+    // ── 탭 크루즈 카드 렌더 ──
+    let tabLoaded = {};
+
+    async function switchTab(btn, dest) {
+      // 탭 버튼 활성화
+      document.querySelectorAll('.cruise-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // 이미 로드된 경우 캐시
+      if (tabLoaded[dest]) {
+        document.getElementById('tabCruiseGrid').innerHTML = tabLoaded[dest];
+        return;
+      }
+      document.getElementById('tabCruiseGrid').innerHTML = '<div class="tabs-loading">불러오는 중...</div>';
+      try {
+        const cruises = await API.filterCruises({ dest, limit: 5 });
+        const imgs = DEST_IMAGES[dest] || DEST_IMAGES['mediterranean'];
+        if (!cruises || cruises.length === 0) {
+          document.getElementById('tabCruiseGrid').innerHTML = '<div class="tabs-loading">해당 목적지 크루즈가 없습니다</div>';
+          return;
+        }
+        const html = cruises.slice(0, 5).map((c, i) => {
+          const img = imgs[i % imgs.length];
+          const nights = c.nights || c.duration || '?';
+          const port = (c.departurePort || c.departure_port || '').split(',')[0] || '';
+          const ship = c.ship || c.shipName || '';
+          const dateRaw = c.dateFrom || c.departure_date || '';
+          const dateStr = dateRaw ? dateRaw.substring(0, 10) : '';
+          const priceRaw = c.price || c.priceFrom || c.lowest_price;
+          const currency = c.currency || 'USD';
+          const priceStr = priceRaw
+            ? (currency === 'EUR' ? '€' : '$') + Number(priceRaw).toLocaleString()
+            : '문의';
+          const title = c.name || c.title || `${nights}박 크루즈`;
+          const ref = c.ref || c.id || '';
+          return `
+            <a href="cruise-view.html?ref=${encodeURIComponent(ref)}" class="tab-card">
+              <div class="tab-card-img"><img src="${img}" alt="${title}" loading="lazy"></div>
+              <div class="tab-card-body">
+                <div class="tab-card-title">${title}</div>
+                <div class="tab-card-from">최저가 (1인 기준)</div>
+                <div class="tab-card-price">${priceStr}</div>
+                <div class="tab-card-price-note">세금 · 제반 비용 별도</div>
+                <div class="tab-card-meta">
+                  ${port ? `<div class="tab-card-meta-row">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    ${port}
+                  </div>` : ''}
+                  ${ship ? `<div class="tab-card-meta-row">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M6 20V10l6-6 6 6v10"/></svg>
+                    ${ship}
+                  </div>` : ''}
+                </div>
+                ${dateStr ? `<span class="tab-card-dates">${dateStr} 출발 · ${nights}박 &rsaquo;</span>` : ''}
+              </div>
+            </a>`;
+        }).join('');
+        tabLoaded[dest] = html;
+        document.getElementById('tabCruiseGrid').innerHTML = html;
+      } catch(e) {
+        console.error(e);
+        document.getElementById('tabCruiseGrid').innerHTML = '<div class="tabs-loading">데이터를 불러올 수 없습니다</div>';
+      }
+    }
+
+    // 첫 탭(지중해) 자동 로드
+    switchTab(document.querySelector('.cruise-tab-btn'), 'mediterranean');
+  </script>
+
+  <!-- 문의 모달 (v2와 동일) -->
+  <script>
+    function openInquiryWith(title, operator, ship, dateFrom, nights, price, ref, currency) {
+      document.getElementById('modalProductName').textContent = title;
+      document.getElementById('modalProductDetail').innerHTML =
+        `${operator} · ${ship}<br>출발: ${dateFrom} / ${nights}박${price ? (currency==='EUR'?' / €':' / $')+price+'~' : ''}`;
+      document.getElementById('f_product').value = title;
+      document.getElementById('f_cruiseline').value = operator;
+      document.getElementById('f_ship').value = ship;
+      document.getElementById('f_date').value = dateFrom;
+      document.getElementById('f_ports').value = '';
+      document.getElementById('f_price').value = price ? (currency==='EUR'?'€':'$')+price+'~' : '문의';
+      document.getElementById('f_ref').value = ref;
+      document.getElementById('inquiryModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function openInquiry() {
+      ['f_product','f_cruiseline','f_ship','f_date','f_ports','f_price','f_ref']
+        .forEach(id => document.getElementById(id).value = '');
+      document.getElementById('modalProductName').textContent = '';
+      document.getElementById('modalProductDetail').innerHTML = '';
+      document.getElementById('inquiryModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeInquiry() {
+      document.getElementById('inquiryModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', e => { if (e.target.id === 'inquiryModal') closeInquiry(); });
+    function submitInquiry(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true; btn.textContent = '전송 중...';
+      const fd = {
+        _subject: `[크루즈링크] ${document.getElementById('f_product').value} - ${document.getElementById('f_name').value}님`,
+        _template: 'table',
+        '크루즈 상품': document.getElementById('f_product').value,
+        '선사': document.getElementById('f_cruiseline').value,
+        '선박': document.getElementById('f_ship').value,
+        '출발일': document.getElementById('f_date').value,
+        '참고가격': document.getElementById('f_price').value,
+        'Ref': document.getElementById('f_ref').value,
+        '고객 이름': document.getElementById('f_name').value,
+        '고객 이메일': document.getElementById('f_email').value,
+        '고객 연락처': document.getElementById('f_phone').value,
+        '인원': document.getElementById('f_pax').value,
+        '희망 객실': document.getElementById('f_cabin').value,
+        '요청사항': document.getElementById('f_message').value || '없음',
+      };
+      const data = new FormData();
+      Object.entries(fd).forEach(([k,v]) => data.append(k,v));
+      fetch('https://formsubmit.co/ajax/info@cruiselink.co.kr', { method:'POST', body:data })
+      .then(() => {
+        document.getElementById('formStatus').innerHTML = '<div style="background:#e8f5e9;padding:12px;border-radius:8px;color:#2e7d32;font-size:0.9rem">✅ 문의가 접수되었습니다.<br>입력하신 이메일로 견적서를 회신드리겠습니다.</div>';
+        document.getElementById('inquiryForm').style.display = 'none';
+        btn.style.display = 'none';
+      }).catch(() => {
+        document.getElementById('formStatus').innerHTML = '<div style="background:#e8f5e9;padding:12px;border-radius:8px;color:#2e7d32;font-size:0.9rem">✅ 문의가 접수되었습니다.<br>입력하신 이메일로 견적서를 회신드리겠습니다.</div>';
+        document.getElementById('inquiryForm').style.display = 'none';
+        btn.style.display = 'none';
+      });
+    }
+  </script>
+
+  <div class="modal-overlay" id="inquiryModal">
+    <div class="modal" style="max-width:460px">
+      <div class="modal-header" style="padding:14px 20px">
+        <h2 style="font-size:1.05rem">🚢 크루즈 문의하기</h2>
+        <button class="modal-close" onclick="closeInquiry()">&times;</button>
+      </div>
+      <div class="modal-body" style="padding:16px 20px">
+        <div class="modal-product-info" style="padding:10px 12px;margin-bottom:12px;font-size:0.88rem;background:#f5f5f5;border-radius:8px">
+          <strong id="modalProductName"></strong><br>
+          <span id="modalProductDetail" style="color:#666"></span>
+        </div>
+        <div class="form-status" id="formStatus"></div>
+        <form id="inquiryForm" onsubmit="submitInquiry(event)">
+          <input type="hidden" id="f_product" name="product_name">
+          <input type="hidden" id="f_cruiseline" name="cruise_line">
+          <input type="hidden" id="f_ship" name="ship">
+          <input type="hidden" id="f_date" name="departure_date">
+          <input type="hidden" id="f_ports" name="ports">
+          <input type="hidden" id="f_price" name="price">
+          <input type="hidden" id="f_ref" name="cruise_ref">
+          <input type="text" name="_honey" style="display:none">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="form-group" style="margin-bottom:8px">
+              <label style="font-size:0.8rem;margin-bottom:3px">이름 <span class="req">*</span></label>
+              <input type="text" id="f_name" name="customer_name" required placeholder="홍길동" style="padding:8px 10px;font-size:0.9rem">
+            </div>
+            <div class="form-group" style="margin-bottom:8px">
+              <label style="font-size:0.8rem;margin-bottom:3px">연락처 <span class="req">*</span></label>
+              <input type="tel" id="f_phone" name="customer_phone" required placeholder="010-1234-5678" style="padding:8px 10px;font-size:0.9rem">
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:8px">
+            <label style="font-size:0.8rem;margin-bottom:3px">이메일 <span class="req">*</span></label>
+            <input type="email" id="f_email" name="customer_email" required placeholder="example@email.com" style="padding:8px 10px;font-size:0.9rem">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="form-group" style="margin-bottom:8px">
+              <label style="font-size:0.8rem;margin-bottom:3px">인원 <span class="req">*</span></label>
+              <select id="f_pax" name="pax" required style="padding:8px 10px;font-size:0.9rem">
+                <option value="">선택</option>
+                <option value="1">1명</option><option value="2">2명</option><option value="3">3명</option>
+                <option value="4">4명</option><option value="5">5명</option><option value="6~10">6~10명</option>
+                <option value="11+">11명 이상</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:8px">
+              <label style="font-size:0.8rem;margin-bottom:3px">객실 타입 <span class="req">*</span></label>
+              <select id="f_cabin" name="cabin_type" required style="padding:8px 10px;font-size:0.9rem">
+                <option value="">선택</option>
+                <option value="내측">내측</option>
+                <option value="오션뷰">오션뷰</option>
+                <option value="발코니">발코니</option>
+                <option value="스위트">스위트</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:8px">
+            <label style="font-size:0.8rem;margin-bottom:3px">요청사항</label>
+            <textarea id="f_message" name="message" rows="2" placeholder="기타 요청사항" style="padding:8px 10px;font-size:0.9rem"></textarea>
+          </div>
+          <div class="privacy-section" style="margin-top:8px;padding-top:8px">
+            <div class="privacy-check" style="margin-bottom:4px">
+              <input type="checkbox" id="privacyAgree" required style="width:16px;height:16px">
+              <label for="privacyAgree" style="font-size:0.8rem">개인정보 수집·이용에 동의합니다. (필수)</label>
+            </div>
+            <button type="button" class="privacy-toggle" style="font-size:0.78rem" onclick="document.getElementById('privacyDetail').classList.toggle('open')">약관 보기 ▼</button>
+            <div class="privacy-detail" id="privacyDetail">
+              <strong>수집항목:</strong> 이름, 이메일, 연락처<br>
+              <strong>수집목적:</strong> 크루즈 상담 및 예약 안내<br>
+              <strong>보유기간:</strong> 상담 완료 후 1년
+            </div>
+          </div>
+          <button type="submit" class="btn btn-orange" id="submitBtn" style="width:100%;margin-top:10px;padding:12px;font-size:1rem">문의하기 전송</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
