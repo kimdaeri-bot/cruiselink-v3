@@ -82,69 +82,22 @@
     }
     .hero-v3-cta:hover { background: var(--orange-hover); }
 
-    /* ── HERO 인라인 검색바 ── */
+    /* ── HERO 인라인 검색바 (v2 filter-bar 스타일) ── */
     .hero-search-wrap {
       position: relative; z-index: 2;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 -2px 30px rgba(0,0,0,0.18);
-      padding: 20px 0;
-      margin-top: 0;
+      background: #fff;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
+      padding: 0;
     }
     .hero-search-inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 20px 24px;
       display: flex;
       gap: 12px;
       align-items: flex-end;
       flex-wrap: wrap;
     }
-    .hero-search-group {
-      flex: 1;
-      min-width: 150px;
-    }
-    .hero-search-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--gray-700);
-      margin-bottom: 5px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .hero-search-group select {
-      width: 100%;
-      padding: 11px 14px;
-      border: 2px solid var(--gray-300);
-      border-radius: var(--radius);
-      font-size: 0.9rem;
-      font-family: inherit;
-      background: #fff;
-      appearance: none;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23616161'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      color: var(--gray-900);
-      transition: border-color 0.2s;
-    }
-    .hero-search-group select:focus { border-color: var(--navy); outline: none; }
-    .hero-search-btn {
-      background: var(--navy);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 13px 32px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s;
-      letter-spacing: 0.3px;
-      height: 48px;
-    }
-    .hero-search-btn:hover { background: var(--navy-light); }
 
     /* ── PROMO STRIP ── */
     .promo-strip {
@@ -581,6 +534,14 @@
       margin-bottom: 20px;
     }
 
+    /* ── hero 내 filter-bar 오버라이드 ── */
+    .hero-search-wrap .filter-bar {
+      margin-top: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 20px 24px !important;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .deal-cards { grid-template-columns: repeat(2, 1fr); }
@@ -627,13 +588,13 @@
       </p>
       <a href="search.html" class="hero-v3-cta">지금 예약하기</a>
     </div>
-    <!-- 검색바 -->
+    <!-- 검색바 (v2 filter-bar 동일) -->
     <div class="hero-search-wrap">
-      <div class="hero-search-inner">
-        <div class="hero-search-group">
+      <div class="hero-search-inner filter-bar" style="margin-top:0; box-shadow:none; border-radius:0;">
+        <div class="filter-group">
           <label>목적지</label>
           <select id="filterDest" onchange="updateDepartureOptions()">
-            <option value="">전체 목적지</option>
+            <option value="">전체</option>
             <option value="korea">한국/일본</option>
             <option value="mediterranean">지중해</option>
             <option value="alaska">알래스카</option>
@@ -645,19 +606,39 @@
             <option value="hawaii">하와이</option>
           </select>
         </div>
-        <div class="hero-search-group">
-          <label>출발 도시</label>
-          <select id="filterPort">
-            <option value="">전체</option>
-          </select>
+        <div class="filter-group">
+          <label>출발도시</label>
+          <div class="multi-select" id="msPort" onclick="toggleMulti(this)">
+            <div class="multi-select-display">전체</div>
+            <div class="multi-select-dropdown" id="msPortDropdown"></div>
+          </div>
         </div>
-        <div class="hero-search-group">
-          <label>출발 월</label>
+        <div class="filter-group">
+          <label>선사</label>
+          <div class="multi-select" id="msOperator" onclick="toggleMulti(this)">
+            <div class="multi-select-display">전체</div>
+            <div class="multi-select-dropdown">
+              <div class="ms-option" data-value="MSC" onclick="toggleOption(event, this)">MSC 크루즈</div>
+              <div class="ms-option" data-value="Norwegian" onclick="toggleOption(event, this)">노르웨이전 크루즈 라인</div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>출발월</label>
           <select id="filterMonth">
             <option value="">전체</option>
           </select>
         </div>
-        <button class="hero-search-btn" onclick="doSearch()">크루즈 검색</button>
+        <div class="filter-group">
+          <label>기간</label>
+          <select id="filterDuration">
+            <option value="">전체</option>
+            <option value="short">1~5박</option>
+            <option value="medium">6~10박</option>
+            <option value="long">11박 이상</option>
+          </select>
+        </div>
+        <button class="btn btn-orange" onclick="doSearch()">🔍 검색</button>
       </div>
     </div>
   </section>
@@ -845,7 +826,7 @@
     document.getElementById('footer').innerHTML = Components.footer();
     document.getElementById('ctaSection').innerHTML = Components.ctaSection();
 
-    // === Departure port mapping ===
+    // === Departure port mapping (v2 동일) ===
     const DEST_PORTS = {
       'korea': ['도쿄','나하, 오키나와','부산','인천'],
       'mediterranean': ['바르셀로나','마르세유','제노바','치비타베키아','나폴리','팔레르모','발레타','메시나','리보르노','트리에스테','피레우스','이스탄불','리스본','말라가','발렌시아'],
@@ -858,18 +839,44 @@
       'hawaii': ['호놀룰루, 하와이'],
     };
 
-    // Populate departure port dropdown based on destination
+    // === Multi-select 함수 (v2 동일) ===
+    function toggleMulti(el) {
+      document.querySelectorAll('.multi-select.open').forEach(ms => { if (ms !== el) ms.classList.remove('open'); });
+      el.classList.toggle('open');
+    }
+    function toggleOption(e, optEl) {
+      e.stopPropagation();
+      optEl.classList.toggle('selected');
+      updateMultiDisplay(optEl.closest('.multi-select'));
+    }
+    function updateMultiDisplay(msEl) {
+      const selected = [...msEl.querySelectorAll('.ms-option.selected')];
+      const display = msEl.querySelector('.multi-select-display');
+      display.textContent = selected.length === 0 ? '전체' : selected.map(o => o.textContent).join(', ');
+    }
+    function getMultiValues(msEl) {
+      return [...msEl.querySelectorAll('.ms-option.selected')].map(o => o.dataset.value);
+    }
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.multi-select')) {
+        document.querySelectorAll('.multi-select.open').forEach(ms => ms.classList.remove('open'));
+      }
+    });
+
+    // 목적지 변경 시 출발도시 멀티셀렉트 갱신
     function updateDepartureOptions() {
       const dest = document.getElementById('filterDest').value;
-      const portSel = document.getElementById('filterPort');
-      portSel.innerHTML = '<option value="">전체</option>';
+      const dropdown = document.getElementById('msPortDropdown');
+      const msPort = document.getElementById('msPort');
+      dropdown.innerHTML = '';
+      msPort.querySelector('.multi-select-display').textContent = '전체';
       if (!dest || !DEST_PORTS[dest]) return;
       DEST_PORTS[dest].forEach(port => {
-        portSel.innerHTML += `<option value="${port}">${port}</option>`;
+        dropdown.innerHTML += `<div class="ms-option" data-value="${port}" onclick="toggleOption(event, this)">${port}</div>`;
       });
     }
 
-    // Populate month filter
+    // 출발월 채우기
     const monthSelect = document.getElementById('filterMonth');
     const now = new Date();
     for (let i = 0; i < 24; i++) {
@@ -879,15 +886,19 @@
       monthSelect.innerHTML += `<option value="${val}">${label}</option>`;
     }
 
-    // Search
+    // 검색 (v2 동일 — 5개 필드)
     function doSearch() {
       const dest = document.getElementById('filterDest').value;
-      const port = document.getElementById('filterPort').value;
+      const operators = getMultiValues(document.getElementById('msOperator'));
+      const ports = getMultiValues(document.getElementById('msPort'));
       const month = document.getElementById('filterMonth').value;
+      const dur = document.getElementById('filterDuration').value;
       const params = new URLSearchParams();
       if (dest) params.set('dest', dest);
-      if (port) params.set('ports', port);
+      if (operators.length) params.set('operators', operators.join(','));
+      if (ports.length) params.set('ports', ports.join(','));
       if (month) params.set('month', month);
+      if (dur) params.set('duration', dur);
       location.href = `search.html?${params.toString()}`;
     }
 
